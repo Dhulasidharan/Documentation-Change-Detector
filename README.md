@@ -116,12 +116,3 @@ Notes:
   app still renders a full comparison on load even if outbound scraping is
   blocked -- only the **Run Comparison** button needs network.
 
-### Suggested README screenshots
-
-Capture these from a running app for the portfolio README:
-1. **Hero** -- title, subtitle, summary metric cards, version overview.
-2. **Modified tab** -- a section expander open showing the old-vs-new columns
-   and the unified `diff` (e.g. the FFI addition in *Permission Model*).
-3. **API Changes tab** -- the added signatures list.
-4. **Sidebar snapshot inspector** -- the JSON metadata + extraction stats.
-5. **How It Works** -- the architecture diagram expanded.
