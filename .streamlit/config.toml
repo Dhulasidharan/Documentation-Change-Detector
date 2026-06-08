@@ -1,0 +1,10 @@
+# Streamlit theme for a clean, product-like demo.
+[theme]
+primaryColor = "#43853d"          # Node.js green
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f3f5f7"
+textColor = "#1c1e21"
+font = "sans serif"
+
+[server]
+headless = true

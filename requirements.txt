@@ -1,0 +1,6 @@
+# Browser automation / extraction. difflib, json, hashlib, re, unicodedata,
+# dataclasses and pathlib are all part of the Python standard library.
+playwright==1.48.0
+
+# Streamlit demo UI (Phase 3). Sits on top of the existing pipeline.
+streamlit==1.39.0

@@ -1,0 +1,122 @@
+{
+  "identical": false,
+  "old": {
+    "url": "https://r2.nodejs.org/dist/v25.0.0/docs/api/permissions.html",
+    "resolved_version": "v25.0.0",
+    "captured_at": "2026-06-08T11:25:05.186887+00:00",
+    "content_hash": "5b60caee83c281f45c0177b496457e749b881cf782c4802f1001d44e08b7b420"
+  },
+  "new": {
+    "url": "https://nodejs.org/docs/latest/api/permissions.html",
+    "resolved_version": "v26.3.0",
+    "captured_at": "2026-06-08T11:25:07.354815+00:00",
+    "content_hash": "87d05ea8a81f976310d36752f834125a02559df3c700ddb7104068988068f13e"
+  },
+  "summary": {
+    "sections_added": 3,
+    "sections_removed": 0,
+    "sections_modified": 3,
+    "sections_unchanged": 6,
+    "signatures_added": 2,
+    "signatures_removed": 0
+  },
+  "api_signature_changes": {
+    "added": [
+      "permission.drop(scope[, reference])",
+      "process._debugProcess()"
+    ],
+    "removed": []
+  },
+  "sections_added": [
+    {
+      "id": "permissions_configuration_file_support",
+      "heading": "Configuration file support",
+      "level": 5,
+      "preview": "Configuration file support In addition to passing permission flags on the command line, they can also be declared in a Node.js configuration file when using the experimental [--experimental-config-fil..."
+    },
+    {
+      "id": "permissions_process_debugprocess_and_cross_process_inspector_activation",
+      "heading": "process._debugProcess() and cross-process Inspector activation",
+      "level": 5,
+      "preview": "process._debugProcess() and cross-process Inspector activation The kInspector permission scope restricts the current process from opening its own V8 Inspector. However, process._debugProcess(pid) — wh..."
+    },
+    {
+      "id": "permissions_permission_drop_scope_reference",
+      "heading": "permission.drop(scope[, reference])",
+      "level": 6,
+      "preview": "permission.drop(scope[, reference]) API call to drop permissions at runtime. This operation is irreversible. When called without a reference, the entire scope is dropped. When called with a reference,..."
+    }
+  ],
+  "sections_removed": [],
+  "sections_modified": [
+    {
+      "id": "permissions_runtime_api",
+      "old_id": "runtime-api",
+      "heading": "Runtime API",
+      "old_heading": "Runtime API",
+      "heading_renamed": false,
+      "similarity": 0.9632,
+      "old_hash": "e83ac7f31447c781b25199e6f9b5b6e9db3480fdc0a44bd375c46dfd3bc8ac1b",
+      "new_hash": "b19f1bd9e181d2879ae46ba52a72476ee767dd84411609a67324a08d953a5101",
+      "diff": [
+        "--- old::Runtime API",
+        "+++ new::Runtime API",
+        "@@ -1,2 +1,2 @@",
+        " Runtime API",
+        "-When enabling the Permission Model through the --permission flag a new property permission is added to the process object. This property contains one function:",
+        "+When enabling the Permission Model through the --permission flag a new property permission is added to the process object. This property contains the following functions:"
+      ]
+    },
+    {
+      "id": "permissions_permission_model_constraints",
+      "old_id": "permission-model-constraints",
+      "heading": "Permission Model constraints",
+      "old_heading": "Permission Model constraints",
+      "heading_renamed": false,
+      "similarity": 0.998,
+      "old_hash": "751aaf75b8a3ae0705f9445a077d012858056fc84939ec6bfd9e5a9145dc1f54",
+      "new_hash": "63e5a267e121a2f67c98e924386e08be0e280cd1752406815133645435608414",
+      "diff": [
+        "--- old::Permission Model constraints",
+        "+++ new::Permission Model constraints",
+        "@@ -1,3 +1,3 @@",
+        " Permission Model constraints",
+        " There are constraints you need to know before using this system:",
+        "-The model does not inherit to a worker thread. When using the Permission Model the following features will be restricted: Native modules Network Child process Worker Threads Inspector protocol File system access WASI The Permission Model is initialized after the Node.js environment is set up. However, certain flags such as --env-file or --openssl-config are designed to read files before environment initialization. As a result, such flags are not subject to the rules of the Permission Model. The same applies for V8 flags that can be set via runtime through v8.setFlagsFromString. OpenSSL engines cannot be requested at runtime when the Permission Model is enabled, affecting the built-in crypto, https, and tls modules. Run-Time Loadable Extensions cannot be loaded when the Permission Model is enabled, affecting the sqlite module. Using existing file descriptors via the node:fs module bypasses the Permission Model.",
+        "+The model does not inherit to a worker thread. When using the Permission Model the following features will be restricted: Native modules Network Child process Worker Threads Inspector protocol File system access WASI FFI The Permission Model is initialized after the Node.js environment is set up. However, certain flags such as --env-file or --openssl-config are designed to read files before environment initialization. As a result, such flags are not subject to the rules of the Permission Model. The same applies for V8 flags that can be set via runtime through v8.setFlagsFromString. OpenSSL engines cannot be requested at runtime when the Permission Model is enabled, affecting the built-in crypto, https, and tls modules. Run-Time Loadable Extensions cannot be loaded when the Permission Model is enabled, affecting the sqlite module. Using existing file descriptors via the node:fs module bypasses the Permission Model."
+      ]
+    },
+    {
+      "id": "permissions_permission_model",
+      "old_id": "permission-model",
+      "heading": "Permission Model",
+      "old_heading": "Permission Model",
+      "heading_renamed": false,
+      "similarity": 0.9215,
+      "old_hash": "e20902a33c8770267d673dce8b130489cdce3897a673c6a30dcefd6047e850e4",
+      "new_hash": "54763aa4dce38030e7489c3d470fcadad591cde226d7520ed3fbcefb9457b398",
+      "diff": [
+        "--- old::Permission Model",
+        "+++ new::Permission Model",
+        "@@ -1,8 +1,9 @@",
+        " Permission Model",
+        "-VersionChanges v23.5.0, v22.13.0 This feature is no longer experimental. v20.0.0 Added in: v20.0.0",
+        "+VersionChangesv23.5.0, v22.13.0This feature is no longer experimental.",
+        "+Stability: 2 - Stable",
+        " The Node.js Permission Model is a mechanism for restricting access to specific resources during execution. The API exists behind a flag --permission which when enabled, will restrict access to all available permissions.",
+        " The available permissions are documented by the --permission flag.",
+        "-When starting Node.js with --permission, the ability to access the file system through the fs module, access the network, spawn processes, use node:worker_threads, use native addons, use WASI, and enable the runtime inspector will be restricted (the listener for SIGUSR1 won't be created).",
+        "+When starting Node.js with --permission, the ability to access the file system through the fs module, access the network, spawn processes, use node:worker_threads, use native addons, use WASI, use FFI, and enable the runtime inspector will be restricted (the listener for SIGUSR1 won't be created).",
+        " $ node --permission index.js",
+        " ",
+        " Error: Access to this API has been restricted",
+        "@@ -12,4 +13,4 @@",
+        "   resource: '/home/user/index.js'",
+        " }",
+        " Allowing access to spawning a process and creating worker threads can be done using the --allow-child-process and --allow-worker respectively.",
+        "-To allow network access, use --allow-net and for allowing native addons when using permission model, use the --allow-addons flag. For WASI, use the --allow-wasi flag.",
+        "+To allow network access, use --allow-net and for allowing native addons when using permission model, use the --allow-addons flag. For WASI, use the --allow-wasi flag. For FFI, use the --allow-ffi flag. The node:ffi module also requires the --experimental-ffi flag and is only available in builds with FFI support."
+      ]
+    }
+  ]
+}

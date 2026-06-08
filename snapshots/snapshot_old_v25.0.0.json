@@ -1,0 +1,526 @@
+{
+  "requested_url": "https://r2.nodejs.org/dist/v25.0.0/docs/api/permissions.html",
+  "resolved_url": "https://r2.nodejs.org/dist/v25.0.0/docs/api/permissions.html",
+  "resolved_version": "v25.0.0",
+  "title": "Permissions | Node.js v25.0.0 Documentation",
+  "captured_at": "2026-06-08T11:25:05.186887+00:00",
+  "content_hash": "5b60caee83c281f45c0177b496457e749b881cf782c4802f1001d44e08b7b420",
+  "stats": {
+    "headings_found": 9,
+    "paragraphs_found": 26,
+    "code_blocks_found": 6,
+    "tables_found": 1,
+    "lists_found": 9,
+    "sections_found": 9,
+    "signatures_found": 1,
+    "elements_found": 51,
+    "content_length": 7486
+  },
+  "api_signatures": [
+    {
+      "name": "permission.has",
+      "params": "scope[, reference]",
+      "signature": "permission.has(scope[, reference])",
+      "section_id": "permissionhasscope-reference"
+    }
+  ],
+  "elements": [
+    {
+      "type": "heading",
+      "level": 2,
+      "language": null,
+      "id": "permissions",
+      "text": "Permissions",
+      "html": "<h2>Permissions<span><a class=\"mark\" href=\"#permissions\" id=\"permissions\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permissions\"></a></h2>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Permissions can be used to control what system resources the Node.js process has access to or what actions the process can take with those resources.",
+      "html": "<p>Permissions can be used to control what system resources the\nNode.js process has access to or what actions the process can take\nwith those resources.</p>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Process-based permissions control the Node.js process's access to resources. The resource can be entirely allowed or denied, or actions related to it can be controlled. For example, file system reads can be allowed while denying writes. This feature does not protect against malicious code. According to the Node.js Security Policy, Node.js trusts any code it is asked to run.",
+      "html": "<ul>\n<li><a href=\"#process-based-permissions\">Process-based permissions</a> control the Node.js\nprocess's access to resources.\nThe resource can be entirely allowed or denied, or actions related to it can\nbe controlled. For example, file system reads can be allowed while denying\nwrites.\nThis feature does not protect against malicious code. According to the Node.js\n<a href=\"https://github.com/nodejs/node/blob/main/SECURITY.md\">Security Policy</a>, Node.js trusts any code it is asked to run.</li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The permission model implements a \"seat belt\" approach, which prevents trusted code from unintentionally changing files or using resources that access has not explicitly been granted to. It does not provide security guarantees in the presence of malicious code. Malicious code can bypass the permission model and execute arbitrary code without the restrictions imposed by the permission model.",
+      "html": "<p>The permission model implements a \"seat belt\" approach, which prevents trusted\ncode from unintentionally changing files or using resources that access has\nnot explicitly been granted to. It does not provide security guarantees in the\npresence of malicious code. Malicious code can bypass the permission model and\nexecute arbitrary code without the restrictions imposed by the permission\nmodel.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "If you find a potential security vulnerability, please refer to our Security Policy.",
+      "html": "<p>If you find a potential security vulnerability, please refer to our\n<a href=\"https://github.com/nodejs/node/blob/main/SECURITY.md\">Security Policy</a>.</p>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "language": null,
+      "id": "process-based-permissions",
+      "text": "Process-based permissions",
+      "html": "<h3>Process-based permissions<span><a class=\"mark\" href=\"#process-based-permissions\" id=\"process-based-permissions\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_process_based_permissions\"></a></h3>"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "language": null,
+      "id": "permission-model",
+      "text": "Permission Model",
+      "html": "<h4>Permission Model<span><a class=\"mark\" href=\"#permission-model\" id=\"permission-model\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permission_model\"></a></h4>"
+    },
+    {
+      "type": "table",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "VersionChanges v23.5.0, v22.13.0 This feature is no longer experimental. v20.0.0 Added in: v20.0.0",
+      "html": "<table>\n<tbody><tr><th>Version</th><th>Changes</th></tr>\n<tr><td>v23.5.0, v22.13.0</td>\n<td><p>This feature is no longer experimental.</p></td></tr>\n<tr><td>v20.0.0</td>\n<td><p><span>Added in: v20.0.0</span></p></td></tr>\n</tbody></table>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "",
+      "html": "<p></p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "",
+      "html": "<p></p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The Node.js Permission Model is a mechanism for restricting access to specific resources during execution. The API exists behind a flag --permission which when enabled, will restrict access to all available permissions.",
+      "html": "<p>The Node.js Permission Model is a mechanism for restricting access to specific\nresources during execution.\nThe API exists behind a flag <a href=\"cli.html#--permission\"><code>--permission</code></a> which when enabled,\nwill restrict access to all available permissions.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The available permissions are documented by the --permission flag.",
+      "html": "<p>The available permissions are documented by the <a href=\"cli.html#--permission\"><code>--permission</code></a>\nflag.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "When starting Node.js with --permission, the ability to access the file system through the fs module, access the network, spawn processes, use node:worker_threads, use native addons, use WASI, and enable the runtime inspector will be restricted (the listener for SIGUSR1 won't be created).",
+      "html": "<p>When starting Node.js with <code>--permission</code>,\nthe ability to access the file system through the <code>fs</code> module, access the network,\nspawn processes, use <code>node:worker_threads</code>, use native addons, use WASI, and\nenable the runtime inspector will be restricted (the listener for SIGUSR1 won't\nbe created).</p>"
+    },
+    {
+      "type": "code",
+      "level": null,
+      "language": "console",
+      "id": null,
+      "text": "$ node --permission index.js\n\nError: Access to this API has been restricted\n    at node:internal/main/run_main_module:23:47 {\n  code: 'ERR_ACCESS_DENIED',\n  permission: 'FileSystemRead',\n  resource: '/home/user/index.js'\n}",
+      "html": "<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node --permission index.js</span>\n\nError: Access to this API has been restricted\n    at node:internal/main/run_main_module:23:47 {\n  code: 'ERR_ACCESS_DENIED',\n  permission: 'FileSystemRead',\n  resource: '/home/user/index.js'\n}</code> <button class=\"copy-button\">copy</button></pre>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Allowing access to spawning a process and creating worker threads can be done using the --allow-child-process and --allow-worker respectively.",
+      "html": "<p>Allowing access to spawning a process and creating worker threads can be done\nusing the <a href=\"cli.html#--allow-child-process\"><code>--allow-child-process</code></a> and <a href=\"cli.html#--allow-worker\"><code>--allow-worker</code></a> respectively.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "To allow network access, use --allow-net and for allowing native addons when using permission model, use the --allow-addons flag. For WASI, use the --allow-wasi flag.",
+      "html": "<p>To allow network access, use <a href=\"cli.html#--allow-net\"><code>--allow-net</code></a> and for allowing native addons\nwhen using permission model, use the <a href=\"cli.html#--allow-addons\"><code>--allow-addons</code></a>\nflag. For WASI, use the <a href=\"cli.html#--allow-wasi\"><code>--allow-wasi</code></a> flag.</p>"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "language": null,
+      "id": "runtime-api",
+      "text": "Runtime API",
+      "html": "<h5>Runtime API<span><a class=\"mark\" href=\"#runtime-api\" id=\"runtime-api\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_runtime_api\"></a></h5>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "When enabling the Permission Model through the --permission flag a new property permission is added to the process object. This property contains one function:",
+      "html": "<p>When enabling the Permission Model through the <a href=\"cli.html#--permission\"><code>--permission</code></a>\nflag a new property <code>permission</code> is added to the <code>process</code> object.\nThis property contains one function:</p>"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "language": null,
+      "id": "permissionhasscope-reference",
+      "text": "permission.has(scope[, reference])",
+      "html": "<h6><code>permission.has(scope[, reference])</code><span><a class=\"mark\" href=\"#permissionhasscope-reference\" id=\"permissionhasscope-reference\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permission_has_scope_reference\"></a></h6>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "API call to check permissions at runtime (permission.has())",
+      "html": "<p>API call to check permissions at runtime (<a href=\"process.html#processpermissionhasscope-reference\"><code>permission.has()</code></a>)</p>"
+    },
+    {
+      "type": "code",
+      "level": null,
+      "language": "js",
+      "id": null,
+      "text": "process.permission.has('fs.write'); // true\nprocess.permission.has('fs.write', '/home/rafaelgss/protected-folder'); // true\n\nprocess.permission.has('fs.read'); // true\nprocess.permission.has('fs.read', '/home/rafaelgss/protected-folder'); // false",
+      "html": "<pre><code class=\"language-js\">process.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.write'</span>); <span class=\"hljs-comment\">// true</span>\nprocess.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.write'</span>, <span class=\"hljs-string\">'/home/rafaelgss/protected-folder'</span>); <span class=\"hljs-comment\">// true</span>\n\nprocess.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.read'</span>); <span class=\"hljs-comment\">// true</span>\nprocess.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.read'</span>, <span class=\"hljs-string\">'/home/rafaelgss/protected-folder'</span>); <span class=\"hljs-comment\">// false</span></code> <button class=\"copy-button\">copy</button></pre>"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "language": null,
+      "id": "file-system-permissions",
+      "text": "File System Permissions",
+      "html": "<h5>File System Permissions<span><a class=\"mark\" href=\"#file-system-permissions\" id=\"file-system-permissions\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_file_system_permissions\"></a></h5>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The Permission Model, by default, restricts access to the file system through the node:fs module. It does not guarantee that users will not be able to access the file system through other means, such as through the node:sqlite module.",
+      "html": "<p>The Permission Model, by default, restricts access to the file system through the <code>node:fs</code> module.\nIt does not guarantee that users will not be able to access the file system through other means,\nsuch as through the <code>node:sqlite</code> module.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "To allow access to the file system, use the --allow-fs-read and --allow-fs-write flags:",
+      "html": "<p>To allow access to the file system, use the <a href=\"cli.html#--allow-fs-read\"><code>--allow-fs-read</code></a> and\n<a href=\"cli.html#--allow-fs-write\"><code>--allow-fs-write</code></a> flags:</p>"
+    },
+    {
+      "type": "code",
+      "level": null,
+      "language": "console",
+      "id": null,
+      "text": "$ node --permission --allow-fs-read=* --allow-fs-write=* index.js\nHello world!",
+      "html": "<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node --permission --allow-fs-read=* --allow-fs-write=* index.js</span>\nHello world!</code> <button class=\"copy-button\">copy</button></pre>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "By default the entrypoints of your application are included in the allowed file system read list. For example:",
+      "html": "<p>By default the entrypoints of your application are included\nin the allowed file system read list. For example:</p>"
+    },
+    {
+      "type": "code",
+      "level": null,
+      "language": "console",
+      "id": null,
+      "text": "$ node --permission index.js",
+      "html": "<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node --permission index.js</span></code> <button class=\"copy-button\">copy</button></pre>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "index.js will be included in the allowed file system read list",
+      "html": "<ul>\n<li><code>index.js</code> will be included in the allowed file system read list</li>\n</ul>"
+    },
+    {
+      "type": "code",
+      "level": null,
+      "language": "console",
+      "id": null,
+      "text": "$ node -r /path/to/custom-require.js --permission index.js.",
+      "html": "<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node -r /path/to/custom-require.js --permission index.js.</span></code> <button class=\"copy-button\">copy</button></pre>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "/path/to/custom-require.js will be included in the allowed file system read list. index.js will be included in the allowed file system read list.",
+      "html": "<ul>\n<li><code>/path/to/custom-require.js</code> will be included in the allowed file system read\nlist.</li>\n<li><code>index.js</code> will be included in the allowed file system read list.</li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The valid arguments for both flags are:",
+      "html": "<p>The valid arguments for both flags are:</p>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "* - To allow all FileSystemRead or FileSystemWrite operations, respectively. Relative paths to the current working directory. Absolute paths.",
+      "html": "<ul>\n<li><code>*</code> - To allow all <code>FileSystemRead</code> or <code>FileSystemWrite</code> operations,\nrespectively.</li>\n<li>Relative paths to the current working directory.</li>\n<li>Absolute paths.</li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Example:",
+      "html": "<p>Example:</p>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "--allow-fs-read=* - It will allow all FileSystemRead operations. --allow-fs-write=* - It will allow all FileSystemWrite operations. --allow-fs-write=/tmp/ - It will allow FileSystemWrite access to the /tmp/ folder. --allow-fs-read=/tmp/ --allow-fs-read=/home/.gitignore - It allows FileSystemRead access to the /tmp/ folder and the /home/.gitignore path.",
+      "html": "<ul>\n<li><code>--allow-fs-read=*</code> - It will allow all <code>FileSystemRead</code> operations.</li>\n<li><code>--allow-fs-write=*</code> - It will allow all <code>FileSystemWrite</code> operations.</li>\n<li><code>--allow-fs-write=/tmp/</code> - It will allow <code>FileSystemWrite</code> access to the <code>/tmp/</code>\nfolder.</li>\n<li><code>--allow-fs-read=/tmp/ --allow-fs-read=/home/.gitignore</code> - It allows <code>FileSystemRead</code> access\nto the <code>/tmp/</code> folder <strong>and</strong> the <code>/home/.gitignore</code> path.</li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Wildcards are supported too:",
+      "html": "<p>Wildcards are supported too:</p>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "--allow-fs-read=/home/test* will allow read access to everything that matches the wildcard. e.g: /home/test/file1 or /home/test2",
+      "html": "<ul>\n<li><code>--allow-fs-read=/home/test*</code> will allow read access to everything\nthat matches the wildcard. e.g: <code>/home/test/file1</code> or <code>/home/test2</code></li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "After passing a wildcard character (*) all subsequent characters will be ignored. For example: /home/*.js will work similar to /home/*.",
+      "html": "<p>After passing a wildcard character (<code>*</code>) all subsequent characters will\nbe ignored. For example: <code>/home/*.js</code> will work similar to <code>/home/*</code>.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "When the permission model is initialized, it will automatically add a wildcard (*) if the specified directory exists. For example, if /home/test/files exists, it will be treated as /home/test/files/*. However, if the directory does not exist, the wildcard will not be added, and access will be limited to /home/test/files. If you want to allow access to a folder that does not exist yet, make sure to explicitly include the wildcard: /my-path/folder-do-not-exist/*.",
+      "html": "<p>When the permission model is initialized, it will automatically add a wildcard\n(*) if the specified directory exists. For example, if <code>/home/test/files</code>\nexists, it will be treated as <code>/home/test/files/*</code>. However, if the directory\ndoes not exist, the wildcard will not be added, and access will be limited to\n<code>/home/test/files</code>. If you want to allow access to a folder that does not exist\nyet, make sure to explicitly include the wildcard:\n<code>/my-path/folder-do-not-exist/*</code>.</p>"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "language": null,
+      "id": "using-the-permission-model-with-npx",
+      "text": "Using the Permission Model with npx",
+      "html": "<h5>Using the Permission Model with <code>npx</code><span><a class=\"mark\" href=\"#using-the-permission-model-with-npx\" id=\"using-the-permission-model-with-npx\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_using_the_permission_model_with_npx\"></a></h5>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "If you're using npx to execute a Node.js script, you can enable the Permission Model by passing the --node-options flag. For example:",
+      "html": "<p>If you're using <a href=\"https://docs.npmjs.com/cli/commands/npx\"><code>npx</code></a> to execute a Node.js script, you can enable the\nPermission Model by passing the <code>--node-options</code> flag. For example:</p>"
+    },
+    {
+      "type": "code",
+      "level": null,
+      "language": "bash",
+      "id": null,
+      "text": "npx --node-options=\"--permission\" package-name",
+      "html": "<pre><code class=\"language-bash\">npx --node-options=<span class=\"hljs-string\">\"--permission\"</span> package-name</code> <button class=\"copy-button\">copy</button></pre>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "This sets the NODE_OPTIONS environment variable for all Node.js processes spawned by npx, without affecting the npx process itself.",
+      "html": "<p>This sets the <code>NODE_OPTIONS</code> environment variable for all Node.js processes\nspawned by <a href=\"https://docs.npmjs.com/cli/commands/npx\"><code>npx</code></a>, without affecting the <code>npx</code> process itself.</p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "FileSystemRead Error with npx",
+      "html": "<p><strong>FileSystemRead Error with <code>npx</code></strong></p>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The above command will likely throw a FileSystemRead invalid access error because Node.js requires file system read access to locate and execute the package. To avoid this:",
+      "html": "<p>The above command will likely throw a <code>FileSystemRead</code> invalid access error\nbecause Node.js requires file system read access to locate and execute the\npackage. To avoid this:</p>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Using a Globally Installed Package Grant read access to the global node_modules directory by running: npx --node-options=\"--permission --allow-fs-read=$(npm prefix -g)\" package-name Using the npx Cache If you are installing the package temporarily or relying on the npx cache, grant read access to the npm cache directory: npx --node-options=\"--permission --allow-fs-read=$(npm config get cache)\" package-name",
+      "html": "<ol>\n<li>\n<p><strong>Using a Globally Installed Package</strong>\nGrant read access to the global <code>node_modules</code> directory by running:</p>\n<pre><code class=\"language-bash\">npx --node-options=<span class=\"hljs-string\">\"--permission --allow-fs-read=<span class=\"hljs-subst\">$(npm prefix -g)</span>\"</span> package-name</code> <button class=\"copy-button\">copy</button></pre>\n</li>\n<li>\n<p><strong>Using the <code>npx</code> Cache</strong>\nIf you are installing the package temporarily or relying on the <code>npx</code> cache,\ngrant read access to the npm cache directory:</p>\n<pre><code class=\"language-bash\">npx --node-options=<span class=\"hljs-string\">\"--permission --allow-fs-read=<span class=\"hljs-subst\">$(npm config get cache)</span>\"</span> package-name</code> <button class=\"copy-button\">copy</button></pre>\n</li>\n</ol>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Any arguments you would normally pass to node (e.g., --allow-* flags) can also be passed through the --node-options flag. This flexibility makes it easy to configure permissions as needed when using npx.",
+      "html": "<p>Any arguments you would normally pass to <code>node</code> (e.g., <code>--allow-*</code> flags) can\nalso be passed through the <code>--node-options</code> flag. This flexibility makes it\neasy to configure permissions as needed when using <code>npx</code>.</p>"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "language": null,
+      "id": "permission-model-constraints",
+      "text": "Permission Model constraints",
+      "html": "<h5>Permission Model constraints<span><a class=\"mark\" href=\"#permission-model-constraints\" id=\"permission-model-constraints\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permission_model_constraints\"></a></h5>"
+    },
+    {
+      "type": "paragraph",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "There are constraints you need to know before using this system:",
+      "html": "<p>There are constraints you need to know before using this system:</p>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "The model does not inherit to a worker thread. When using the Permission Model the following features will be restricted: Native modules Network Child process Worker Threads Inspector protocol File system access WASI The Permission Model is initialized after the Node.js environment is set up. However, certain flags such as --env-file or --openssl-config are designed to read files before environment initialization. As a result, such flags are not subject to the rules of the Permission Model. The same applies for V8 flags that can be set via runtime through v8.setFlagsFromString. OpenSSL engines cannot be requested at runtime when the Permission Model is enabled, affecting the built-in crypto, https, and tls modules. Run-Time Loadable Extensions cannot be loaded when the Permission Model is enabled, affecting the sqlite module. Using existing file descriptors via the node:fs module bypasses the Permission Model.",
+      "html": "<ul>\n<li>The model does not inherit to a worker thread.</li>\n<li>When using the Permission Model the following features will be restricted:\n<ul>\n<li>Native modules</li>\n<li>Network</li>\n<li>Child process</li>\n<li>Worker Threads</li>\n<li>Inspector protocol</li>\n<li>File system access</li>\n<li>WASI</li>\n</ul>\n</li>\n<li>The Permission Model is initialized after the Node.js environment is set up.\nHowever, certain flags such as <code>--env-file</code> or <code>--openssl-config</code> are designed\nto read files before environment initialization. As a result, such flags are\nnot subject to the rules of the Permission Model. The same applies for V8\nflags that can be set via runtime through <code>v8.setFlagsFromString</code>.</li>\n<li>OpenSSL engines cannot be requested at runtime when the Permission\nModel is enabled, affecting the built-in crypto, https, and tls modules.</li>\n<li>Run-Time Loadable Extensions cannot be loaded when the Permission Model is\nenabled, affecting the sqlite module.</li>\n<li>Using existing file descriptors via the <code>node:fs</code> module bypasses the\nPermission Model.</li>\n</ul>"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "language": null,
+      "id": "limitations-and-known-issues",
+      "text": "Limitations and Known Issues",
+      "html": "<h5>Limitations and Known Issues<span><a class=\"mark\" href=\"#limitations-and-known-issues\" id=\"limitations-and-known-issues\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_limitations_and_known_issues\"></a></h5>"
+    },
+    {
+      "type": "list",
+      "level": null,
+      "language": null,
+      "id": null,
+      "text": "Symbolic links will be followed even to locations outside of the set of paths that access has been granted to. Relative symbolic links may allow access to arbitrary files and directories. When starting applications with the permission model enabled, you must ensure that no paths to which access has been granted contain relative symbolic links.",
+      "html": "<ul>\n<li>Symbolic links will be followed even to locations outside of the set of paths\nthat access has been granted to. Relative symbolic links may allow access to\narbitrary files and directories. When starting applications with the\npermission model enabled, you must ensure that no paths to which access has\nbeen granted contain relative symbolic links.</li>\n</ul>"
+    }
+  ],
+  "sections": [
+    {
+      "id": "permissions",
+      "heading": "Permissions",
+      "level": 2,
+      "html": "<h2>Permissions<span><a class=\"mark\" href=\"#permissions\" id=\"permissions\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permissions\"></a></h2>\n<p>Permissions can be used to control what system resources the\nNode.js process has access to or what actions the process can take\nwith those resources.</p>\n<ul>\n<li><a href=\"#process-based-permissions\">Process-based permissions</a> control the Node.js\nprocess's access to resources.\nThe resource can be entirely allowed or denied, or actions related to it can\nbe controlled. For example, file system reads can be allowed while denying\nwrites.\nThis feature does not protect against malicious code. According to the Node.js\n<a href=\"https://github.com/nodejs/node/blob/main/SECURITY.md\">Security Policy</a>, Node.js trusts any code it is asked to run.</li>\n</ul>\n<p>The permission model implements a \"seat belt\" approach, which prevents trusted\ncode from unintentionally changing files or using resources that access has\nnot explicitly been granted to. It does not provide security guarantees in the\npresence of malicious code. Malicious code can bypass the permission model and\nexecute arbitrary code without the restrictions imposed by the permission\nmodel.</p>\n<p>If you find a potential security vulnerability, please refer to our\n<a href=\"https://github.com/nodejs/node/blob/main/SECURITY.md\">Security Policy</a>.</p>",
+      "text": "Permissions\nPermissions can be used to control what system resources the Node.js process has access to or what actions the process can take with those resources.\nProcess-based permissions control the Node.js process's access to resources. The resource can be entirely allowed or denied, or actions related to it can be controlled. For example, file system reads can be allowed while denying writes. This feature does not protect against malicious code. According to the Node.js Security Policy, Node.js trusts any code it is asked to run.\nThe permission model implements a \"seat belt\" approach, which prevents trusted code from unintentionally changing files or using resources that access has not explicitly been granted to. It does not provide security guarantees in the presence of malicious code. Malicious code can bypass the permission model and execute arbitrary code without the restrictions imposed by the permission model.\nIf you find a potential security vulnerability, please refer to our Security Policy.",
+      "hash": "68affdcd5dc0ba09965475612693673d2c421bd30ff27408073688c749ea8927",
+      "api_signatures": []
+    },
+    {
+      "id": "process-based-permissions",
+      "heading": "Process-based permissions",
+      "level": 3,
+      "html": "<h3>Process-based permissions<span><a class=\"mark\" href=\"#process-based-permissions\" id=\"process-based-permissions\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_process_based_permissions\"></a></h3>",
+      "text": "Process-based permissions",
+      "hash": "84581231d3af0eda4d12bac7c101dff43d0adca06d372772a63019e9ed5889c9",
+      "api_signatures": []
+    },
+    {
+      "id": "permission-model",
+      "heading": "Permission Model",
+      "level": 4,
+      "html": "<h4>Permission Model<span><a class=\"mark\" href=\"#permission-model\" id=\"permission-model\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permission_model\"></a></h4>\n<table>\n<tbody><tr><th>Version</th><th>Changes</th></tr>\n<tr><td>v23.5.0, v22.13.0</td>\n<td><p>This feature is no longer experimental.</p></td></tr>\n<tr><td>v20.0.0</td>\n<td><p><span>Added in: v20.0.0</span></p></td></tr>\n</tbody></table>\n<p></p>\n<p></p>\n<p>The Node.js Permission Model is a mechanism for restricting access to specific\nresources during execution.\nThe API exists behind a flag <a href=\"cli.html#--permission\"><code>--permission</code></a> which when enabled,\nwill restrict access to all available permissions.</p>\n<p>The available permissions are documented by the <a href=\"cli.html#--permission\"><code>--permission</code></a>\nflag.</p>\n<p>When starting Node.js with <code>--permission</code>,\nthe ability to access the file system through the <code>fs</code> module, access the network,\nspawn processes, use <code>node:worker_threads</code>, use native addons, use WASI, and\nenable the runtime inspector will be restricted (the listener for SIGUSR1 won't\nbe created).</p>\n<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node --permission index.js</span>\n\nError: Access to this API has been restricted\n    at node:internal/main/run_main_module:23:47 {\n  code: 'ERR_ACCESS_DENIED',\n  permission: 'FileSystemRead',\n  resource: '/home/user/index.js'\n}</code> <button class=\"copy-button\">copy</button></pre>\n<p>Allowing access to spawning a process and creating worker threads can be done\nusing the <a href=\"cli.html#--allow-child-process\"><code>--allow-child-process</code></a> and <a href=\"cli.html#--allow-worker\"><code>--allow-worker</code></a> respectively.</p>\n<p>To allow network access, use <a href=\"cli.html#--allow-net\"><code>--allow-net</code></a> and for allowing native addons\nwhen using permission model, use the <a href=\"cli.html#--allow-addons\"><code>--allow-addons</code></a>\nflag. For WASI, use the <a href=\"cli.html#--allow-wasi\"><code>--allow-wasi</code></a> flag.</p>",
+      "text": "Permission Model\nVersionChanges v23.5.0, v22.13.0 This feature is no longer experimental. v20.0.0 Added in: v20.0.0\nThe Node.js Permission Model is a mechanism for restricting access to specific resources during execution. The API exists behind a flag --permission which when enabled, will restrict access to all available permissions.\nThe available permissions are documented by the --permission flag.\nWhen starting Node.js with --permission, the ability to access the file system through the fs module, access the network, spawn processes, use node:worker_threads, use native addons, use WASI, and enable the runtime inspector will be restricted (the listener for SIGUSR1 won't be created).\n$ node --permission index.js\n\nError: Access to this API has been restricted\n    at node:internal/main/run_main_module:23:47 {\n  code: 'ERR_ACCESS_DENIED',\n  permission: 'FileSystemRead',\n  resource: '/home/user/index.js'\n}\nAllowing access to spawning a process and creating worker threads can be done using the --allow-child-process and --allow-worker respectively.\nTo allow network access, use --allow-net and for allowing native addons when using permission model, use the --allow-addons flag. For WASI, use the --allow-wasi flag.",
+      "hash": "e20902a33c8770267d673dce8b130489cdce3897a673c6a30dcefd6047e850e4",
+      "api_signatures": []
+    },
+    {
+      "id": "runtime-api",
+      "heading": "Runtime API",
+      "level": 5,
+      "html": "<h5>Runtime API<span><a class=\"mark\" href=\"#runtime-api\" id=\"runtime-api\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_runtime_api\"></a></h5>\n<p>When enabling the Permission Model through the <a href=\"cli.html#--permission\"><code>--permission</code></a>\nflag a new property <code>permission</code> is added to the <code>process</code> object.\nThis property contains one function:</p>",
+      "text": "Runtime API\nWhen enabling the Permission Model through the --permission flag a new property permission is added to the process object. This property contains one function:",
+      "hash": "e83ac7f31447c781b25199e6f9b5b6e9db3480fdc0a44bd375c46dfd3bc8ac1b",
+      "api_signatures": []
+    },
+    {
+      "id": "permissionhasscope-reference",
+      "heading": "permission.has(scope[, reference])",
+      "level": 6,
+      "html": "<h6><code>permission.has(scope[, reference])</code><span><a class=\"mark\" href=\"#permissionhasscope-reference\" id=\"permissionhasscope-reference\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permission_has_scope_reference\"></a></h6>\n<p>API call to check permissions at runtime (<a href=\"process.html#processpermissionhasscope-reference\"><code>permission.has()</code></a>)</p>\n<pre><code class=\"language-js\">process.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.write'</span>); <span class=\"hljs-comment\">// true</span>\nprocess.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.write'</span>, <span class=\"hljs-string\">'/home/rafaelgss/protected-folder'</span>); <span class=\"hljs-comment\">// true</span>\n\nprocess.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.read'</span>); <span class=\"hljs-comment\">// true</span>\nprocess.<span class=\"hljs-property\">permission</span>.<span class=\"hljs-title function_\">has</span>(<span class=\"hljs-string\">'fs.read'</span>, <span class=\"hljs-string\">'/home/rafaelgss/protected-folder'</span>); <span class=\"hljs-comment\">// false</span></code> <button class=\"copy-button\">copy</button></pre>",
+      "text": "permission.has(scope[, reference])\nAPI call to check permissions at runtime (permission.has())\nprocess.permission.has('fs.write'); // true\nprocess.permission.has('fs.write', '/home/rafaelgss/protected-folder'); // true\n\nprocess.permission.has('fs.read'); // true\nprocess.permission.has('fs.read', '/home/rafaelgss/protected-folder'); // false",
+      "hash": "97a8321451b7ed096d419e85c5956d926f6744374cd528c0b48595c7ba2e4a14",
+      "api_signatures": [
+        {
+          "name": "permission.has",
+          "params": "scope[, reference]",
+          "signature": "permission.has(scope[, reference])"
+        }
+      ]
+    },
+    {
+      "id": "file-system-permissions",
+      "heading": "File System Permissions",
+      "level": 5,
+      "html": "<h5>File System Permissions<span><a class=\"mark\" href=\"#file-system-permissions\" id=\"file-system-permissions\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_file_system_permissions\"></a></h5>\n<p>The Permission Model, by default, restricts access to the file system through the <code>node:fs</code> module.\nIt does not guarantee that users will not be able to access the file system through other means,\nsuch as through the <code>node:sqlite</code> module.</p>\n<p>To allow access to the file system, use the <a href=\"cli.html#--allow-fs-read\"><code>--allow-fs-read</code></a> and\n<a href=\"cli.html#--allow-fs-write\"><code>--allow-fs-write</code></a> flags:</p>\n<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node --permission --allow-fs-read=* --allow-fs-write=* index.js</span>\nHello world!</code> <button class=\"copy-button\">copy</button></pre>\n<p>By default the entrypoints of your application are included\nin the allowed file system read list. For example:</p>\n<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node --permission index.js</span></code> <button class=\"copy-button\">copy</button></pre>\n<ul>\n<li><code>index.js</code> will be included in the allowed file system read list</li>\n</ul>\n<pre><code class=\"language-console\"><span class=\"hljs-meta prompt_\">$ </span><span class=\"language-bash\">node -r /path/to/custom-require.js --permission index.js.</span></code> <button class=\"copy-button\">copy</button></pre>\n<ul>\n<li><code>/path/to/custom-require.js</code> will be included in the allowed file system read\nlist.</li>\n<li><code>index.js</code> will be included in the allowed file system read list.</li>\n</ul>\n<p>The valid arguments for both flags are:</p>\n<ul>\n<li><code>*</code> - To allow all <code>FileSystemRead</code> or <code>FileSystemWrite</code> operations,\nrespectively.</li>\n<li>Relative paths to the current working directory.</li>\n<li>Absolute paths.</li>\n</ul>\n<p>Example:</p>\n<ul>\n<li><code>--allow-fs-read=*</code> - It will allow all <code>FileSystemRead</code> operations.</li>\n<li><code>--allow-fs-write=*</code> - It will allow all <code>FileSystemWrite</code> operations.</li>\n<li><code>--allow-fs-write=/tmp/</code> - It will allow <code>FileSystemWrite</code> access to the <code>/tmp/</code>\nfolder.</li>\n<li><code>--allow-fs-read=/tmp/ --allow-fs-read=/home/.gitignore</code> - It allows <code>FileSystemRead</code> access\nto the <code>/tmp/</code> folder <strong>and</strong> the <code>/home/.gitignore</code> path.</li>\n</ul>\n<p>Wildcards are supported too:</p>\n<ul>\n<li><code>--allow-fs-read=/home/test*</code> will allow read access to everything\nthat matches the wildcard. e.g: <code>/home/test/file1</code> or <code>/home/test2</code></li>\n</ul>\n<p>After passing a wildcard character (<code>*</code>) all subsequent characters will\nbe ignored. For example: <code>/home/*.js</code> will work similar to <code>/home/*</code>.</p>\n<p>When the permission model is initialized, it will automatically add a wildcard\n(*) if the specified directory exists. For example, if <code>/home/test/files</code>\nexists, it will be treated as <code>/home/test/files/*</code>. However, if the directory\ndoes not exist, the wildcard will not be added, and access will be limited to\n<code>/home/test/files</code>. If you want to allow access to a folder that does not exist\nyet, make sure to explicitly include the wildcard:\n<code>/my-path/folder-do-not-exist/*</code>.</p>",
+      "text": "File System Permissions\nThe Permission Model, by default, restricts access to the file system through the node:fs module. It does not guarantee that users will not be able to access the file system through other means, such as through the node:sqlite module.\nTo allow access to the file system, use the --allow-fs-read and --allow-fs-write flags:\n$ node --permission --allow-fs-read=* --allow-fs-write=* index.js\nHello world!\nBy default the entrypoints of your application are included in the allowed file system read list. For example:\n$ node --permission index.js\nindex.js will be included in the allowed file system read list\n$ node -r /path/to/custom-require.js --permission index.js.\n/path/to/custom-require.js will be included in the allowed file system read list. index.js will be included in the allowed file system read list.\nThe valid arguments for both flags are:\n* - To allow all FileSystemRead or FileSystemWrite operations, respectively. Relative paths to the current working directory. Absolute paths.\nExample:\n--allow-fs-read=* - It will allow all FileSystemRead operations. --allow-fs-write=* - It will allow all FileSystemWrite operations. --allow-fs-write=/tmp/ - It will allow FileSystemWrite access to the /tmp/ folder. --allow-fs-read=/tmp/ --allow-fs-read=/home/.gitignore - It allows FileSystemRead access to the /tmp/ folder and the /home/.gitignore path.\nWildcards are supported too:\n--allow-fs-read=/home/test* will allow read access to everything that matches the wildcard. e.g: /home/test/file1 or /home/test2\nAfter passing a wildcard character (*) all subsequent characters will be ignored. For example: /home/*.js will work similar to /home/*.\nWhen the permission model is initialized, it will automatically add a wildcard (*) if the specified directory exists. For example, if /home/test/files exists, it will be treated as /home/test/files/*. However, if the directory does not exist, the wildcard will not be added, and access will be limited to /home/test/files. If you want to allow access to a folder that does not exist yet, make sure to explicitly include the wildcard: /my-path/folder-do-not-exist/*.",
+      "hash": "65ad4f01a7b0a59f49b66f46a1150d11b47b45b3d485452035da383ddd6f6586",
+      "api_signatures": []
+    },
+    {
+      "id": "using-the-permission-model-with-npx",
+      "heading": "Using the Permission Model with npx",
+      "level": 5,
+      "html": "<h5>Using the Permission Model with <code>npx</code><span><a class=\"mark\" href=\"#using-the-permission-model-with-npx\" id=\"using-the-permission-model-with-npx\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_using_the_permission_model_with_npx\"></a></h5>\n<p>If you're using <a href=\"https://docs.npmjs.com/cli/commands/npx\"><code>npx</code></a> to execute a Node.js script, you can enable the\nPermission Model by passing the <code>--node-options</code> flag. For example:</p>\n<pre><code class=\"language-bash\">npx --node-options=<span class=\"hljs-string\">\"--permission\"</span> package-name</code> <button class=\"copy-button\">copy</button></pre>\n<p>This sets the <code>NODE_OPTIONS</code> environment variable for all Node.js processes\nspawned by <a href=\"https://docs.npmjs.com/cli/commands/npx\"><code>npx</code></a>, without affecting the <code>npx</code> process itself.</p>\n<p><strong>FileSystemRead Error with <code>npx</code></strong></p>\n<p>The above command will likely throw a <code>FileSystemRead</code> invalid access error\nbecause Node.js requires file system read access to locate and execute the\npackage. To avoid this:</p>\n<ol>\n<li>\n<p><strong>Using a Globally Installed Package</strong>\nGrant read access to the global <code>node_modules</code> directory by running:</p>\n<pre><code class=\"language-bash\">npx --node-options=<span class=\"hljs-string\">\"--permission --allow-fs-read=<span class=\"hljs-subst\">$(npm prefix -g)</span>\"</span> package-name</code> <button class=\"copy-button\">copy</button></pre>\n</li>\n<li>\n<p><strong>Using the <code>npx</code> Cache</strong>\nIf you are installing the package temporarily or relying on the <code>npx</code> cache,\ngrant read access to the npm cache directory:</p>\n<pre><code class=\"language-bash\">npx --node-options=<span class=\"hljs-string\">\"--permission --allow-fs-read=<span class=\"hljs-subst\">$(npm config get cache)</span>\"</span> package-name</code> <button class=\"copy-button\">copy</button></pre>\n</li>\n</ol>\n<p>Any arguments you would normally pass to <code>node</code> (e.g., <code>--allow-*</code> flags) can\nalso be passed through the <code>--node-options</code> flag. This flexibility makes it\neasy to configure permissions as needed when using <code>npx</code>.</p>",
+      "text": "Using the Permission Model with npx\nIf you're using npx to execute a Node.js script, you can enable the Permission Model by passing the --node-options flag. For example:\nnpx --node-options=\"--permission\" package-name\nThis sets the NODE_OPTIONS environment variable for all Node.js processes spawned by npx, without affecting the npx process itself.\nFileSystemRead Error with npx\nThe above command will likely throw a FileSystemRead invalid access error because Node.js requires file system read access to locate and execute the package. To avoid this:\nUsing a Globally Installed Package Grant read access to the global node_modules directory by running: npx --node-options=\"--permission --allow-fs-read=$(npm prefix -g)\" package-name Using the npx Cache If you are installing the package temporarily or relying on the npx cache, grant read access to the npm cache directory: npx --node-options=\"--permission --allow-fs-read=$(npm config get cache)\" package-name\nAny arguments you would normally pass to node (e.g., --allow-* flags) can also be passed through the --node-options flag. This flexibility makes it easy to configure permissions as needed when using npx.",
+      "hash": "0ff689a5620afe10e03ddcbfbd58d7a264d39c78ef1b62c37520f63c8dd9fe72",
+      "api_signatures": []
+    },
+    {
+      "id": "permission-model-constraints",
+      "heading": "Permission Model constraints",
+      "level": 5,
+      "html": "<h5>Permission Model constraints<span><a class=\"mark\" href=\"#permission-model-constraints\" id=\"permission-model-constraints\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_permission_model_constraints\"></a></h5>\n<p>There are constraints you need to know before using this system:</p>\n<ul>\n<li>The model does not inherit to a worker thread.</li>\n<li>When using the Permission Model the following features will be restricted:\n<ul>\n<li>Native modules</li>\n<li>Network</li>\n<li>Child process</li>\n<li>Worker Threads</li>\n<li>Inspector protocol</li>\n<li>File system access</li>\n<li>WASI</li>\n</ul>\n</li>\n<li>The Permission Model is initialized after the Node.js environment is set up.\nHowever, certain flags such as <code>--env-file</code> or <code>--openssl-config</code> are designed\nto read files before environment initialization. As a result, such flags are\nnot subject to the rules of the Permission Model. The same applies for V8\nflags that can be set via runtime through <code>v8.setFlagsFromString</code>.</li>\n<li>OpenSSL engines cannot be requested at runtime when the Permission\nModel is enabled, affecting the built-in crypto, https, and tls modules.</li>\n<li>Run-Time Loadable Extensions cannot be loaded when the Permission Model is\nenabled, affecting the sqlite module.</li>\n<li>Using existing file descriptors via the <code>node:fs</code> module bypasses the\nPermission Model.</li>\n</ul>",
+      "text": "Permission Model constraints\nThere are constraints you need to know before using this system:\nThe model does not inherit to a worker thread. When using the Permission Model the following features will be restricted: Native modules Network Child process Worker Threads Inspector protocol File system access WASI The Permission Model is initialized after the Node.js environment is set up. However, certain flags such as --env-file or --openssl-config are designed to read files before environment initialization. As a result, such flags are not subject to the rules of the Permission Model. The same applies for V8 flags that can be set via runtime through v8.setFlagsFromString. OpenSSL engines cannot be requested at runtime when the Permission Model is enabled, affecting the built-in crypto, https, and tls modules. Run-Time Loadable Extensions cannot be loaded when the Permission Model is enabled, affecting the sqlite module. Using existing file descriptors via the node:fs module bypasses the Permission Model.",
+      "hash": "751aaf75b8a3ae0705f9445a077d012858056fc84939ec6bfd9e5a9145dc1f54",
+      "api_signatures": []
+    },
+    {
+      "id": "limitations-and-known-issues",
+      "heading": "Limitations and Known Issues",
+      "level": 5,
+      "html": "<h5>Limitations and Known Issues<span><a class=\"mark\" href=\"#limitations-and-known-issues\" id=\"limitations-and-known-issues\">#</a></span><a aria-hidden=\"true\" class=\"legacy\" id=\"permissions_limitations_and_known_issues\"></a></h5>\n<ul>\n<li>Symbolic links will be followed even to locations outside of the set of paths\nthat access has been granted to. Relative symbolic links may allow access to\narbitrary files and directories. When starting applications with the\npermission model enabled, you must ensure that no paths to which access has\nbeen granted contain relative symbolic links.</li>\n</ul>",
+      "text": "Limitations and Known Issues\nSymbolic links will be followed even to locations outside of the set of paths that access has been granted to. Relative symbolic links may allow access to arbitrary files and directories. When starting applications with the permission model enabled, you must ensure that no paths to which access has been granted contain relative symbolic links.",
+      "hash": "424b76f8ce970fb357f2a9b4380575a1237d06d216ef846f718f8bc55591b9ee",
+      "api_signatures": []
+    }
+  ]
+}
